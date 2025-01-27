@@ -26,7 +26,7 @@ public class Quadro {
     @Schema(description = "Lista de status do quadro", example = "[\"Aberto\", \"Em andamento\", \"Concluído\"]")
     private List<String> status;
 
-    @OneToMany(mappedBy = "quadro")
+    @OneToMany(mappedBy = "quadro", cascade = CascadeType.ALL, orphanRemoval = true)
     @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private List<Tarefa> tarefas = new ArrayList<>();
 

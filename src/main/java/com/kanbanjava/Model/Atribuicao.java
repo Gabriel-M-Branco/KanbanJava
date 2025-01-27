@@ -16,6 +16,7 @@ public class Atribuicao {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "atribuicao_seq")
     @SequenceGenerator(name = "atribuicao_seq", sequenceName = "seq_atribuicao_id", allocationSize = 1)
+    @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
 
     @ManyToOne
@@ -29,7 +30,7 @@ public class Atribuicao {
     @Schema(description = "Data da atribuicao", example = "2025-01-26T14:30")
     private LocalDateTime dataAtribuicao;
 
-    @Schema(description = "Status da Atribuição", example = "EM_ANDAMENTO")
+    @Schema(description = "Status da Atribuição", example = "EM ANDAMENTO")
     private String status;
 
     @Schema(description = "Nome do quadro", example = "Quadro de Projetos")
