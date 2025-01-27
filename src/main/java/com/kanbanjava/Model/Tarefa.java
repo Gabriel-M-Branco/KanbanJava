@@ -10,14 +10,14 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Task {
+public class Tarefa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_seq")
     @SequenceGenerator(name = "item_seq", sequenceName = "seq_item_id", allocationSize = 1)
     private Long id;
 
-    @OneToMany(mappedBy = "task")
+    @OneToMany(mappedBy = "tarefa")
     private List<Atribuicao> atribuicoes = new ArrayList<>();
 
     @ManyToOne

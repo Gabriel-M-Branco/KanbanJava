@@ -28,7 +28,7 @@ public class Quadro {
 
     @OneToMany(mappedBy = "quadro")
     @Schema(accessMode = Schema.AccessMode.READ_ONLY)
-    private List<Task> tasks = new ArrayList<>();
+    private List<Tarefa> tarefas = new ArrayList<>();
 
     @Schema(description = "Nome do quadro", example = "Quadro de Projetos")
     private String nome;

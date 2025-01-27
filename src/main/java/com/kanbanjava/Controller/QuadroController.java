@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -24,21 +26,42 @@ public class QuadroController {
         this.repository = repository;
     }
 
+    @GetMapping("/lista-status/{id}")
+    @Operation(summary = "Retorna uma lista com os status que um Quadro possui", method = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Lista retornada com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Parâmetros inválidos"),
+            @ApiResponse(responseCode = "500", description = "Erro ao retornar a lista"),
+    })
+    public ResponseEntity<List<String>> ListarStatusDoQuadro(@PathVariable("id") Long id) {
+        try {
+            Quadro quadro = repository.findById(id).orElse(null);
+
+            if (quadro == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonList("Quadro não encontrado"));
+            }
+
+            return ResponseEntity.status(HttpStatus.OK).body(quadro.getStatus());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Collections.singletonList("Erro ao tentar listar o quadro"));
+        }
+    }
+
     @GetMapping("/listar")
     @Operation(summary = "Lista os Quadros", method = "GET")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Quadros retornados com sucesso"),
-            @ApiResponse(responseCode = "400", description = "Parâmetros inválidos"),
             @ApiResponse(responseCode = "500", description = "Erro ao listar os Quadros"),
     })
     public ResponseEntity<RespostaApi<List<Quadro>>> ListarQuadros() {
-        List<Quadro> quadros = repository.findAll();
+        try {
+            List<Quadro> quadros = repository.findAll();
 
-        if (quadros.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new RespostaApi<>(null, "Nenhum quadro foi encontrado.", 404));
+            return ResponseEntity.status(HttpStatus.OK).body(new RespostaApi<>(quadros, "Quadros encontrados com sucesso", 200));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new RespostaApi<>(null, "Erro ao tentar listar os quadros", 500));
         }
 
-        return ResponseEntity.status(HttpStatus.OK).body(new RespostaApi<>(quadros, "Quadros encontrados com sucesso", 200));
     }
 
     @GetMapping("/listar/{id}")
@@ -50,13 +73,17 @@ public class QuadroController {
             @ApiResponse(responseCode = "500", description = "Erro ao encontrar o Quadro"),
     })
     public ResponseEntity<RespostaApi<Quadro>> ListarQuadroPorId(@PathVariable("id") Long id) {
-        Quadro quadro = repository.findById(id).orElse(null);
+        try {
+            Quadro quadro = repository.findById(id).orElse(null);
 
-        if (quadro == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new RespostaApi<>(null, "Nenhum quadro com o ID " + id + " foi encontrado.", 404));
+            if (quadro == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new RespostaApi<>(null, "Nenhum quadro com o ID " + id + " foi encontrado.", 404));
+            }
+
+            return ResponseEntity.status(HttpStatus.OK).body(new RespostaApi<>(quadro, "Quadro encontrado com sucesso", 200));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new RespostaApi<>(null, "Erro ao tentar listar o quadro", 500));
         }
-
-        return ResponseEntity.status(HttpStatus.OK).body(new RespostaApi<>(quadro, "Quadro encontrado com sucesso", 200));
     }
 
     @PostMapping("/salvar")
@@ -67,9 +94,59 @@ public class QuadroController {
             @ApiResponse(responseCode = "500", description = "Erro ao salvar o quadro"),
     })
     public ResponseEntity<RespostaApi<Quadro>> salvarQuadro(@RequestBody Quadro quadro) {
-        Quadro quadroSalvo = repository.save(quadro);
+        try {
+            Quadro quadroSalvo = repository.save(quadro);
 
-        return ResponseEntity.status(HttpStatus.OK).body(new RespostaApi<>(quadroSalvo, "Quadro salvo com sucesso", 200));
+            return ResponseEntity.status(HttpStatus.OK).body(new RespostaApi<>(quadroSalvo, "Quadro salvo com sucesso", 200));
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new RespostaApi<>(null, "Erro desconhecido ao salvar o quadro", 500));
+        }
     }
 
+    @PutMapping("/atualizar/{id}")
+    @Operation(summary = "Atualiza um Quadro", method = "PUT")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Quadro atualizado com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Parâmetros inválidos"),
+            @ApiResponse(responseCode = "404", description = "Quadro não foi encontrado"),
+            @ApiResponse(responseCode = "500", description = "Erro ao atualizar o quadro"),
+    })
+    public ResponseEntity<RespostaApi<Quadro>> atualizarQuadro(@PathVariable("id") Long id, @RequestBody Quadro quadroNovo) {
+        Quadro quadroAntigo = repository.findById(id).orElse(null);
+
+        if (quadroAntigo == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new RespostaApi<>(null, "Nenhum quadro com o ID " + id + " foi encontrado.", 404));
+        }
+
+        quadroAntigo.setDescricao(quadroNovo.getNome());
+        quadroAntigo.setNome(quadroNovo.getDescricao());
+        quadroAntigo.setStatus(quadroNovo.getStatus());
+        repository.save(quadroAntigo);
+
+        return ResponseEntity.status(HttpStatus.OK).body(new RespostaApi<>(quadroAntigo, "Quadro atualizado com sucesso", 200));
+    }
+
+    @DeleteMapping("/excluir/{id}")
+    @Operation(summary = "Exclui um Quadro", method = "DELETE")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Quadro excluído com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Parâmetros inválidos"),
+            @ApiResponse(responseCode = "404", description = "Quadro não foi encontrado"),
+            @ApiResponse(responseCode = "500", description = "Erro ao excluir o quadro"),
+    })
+    public ResponseEntity<RespostaApi<Quadro>> excluirQuadro(@PathVariable("id") Long id) {
+        Quadro quadro = repository.findById(id).orElse(null);
+
+        if (quadro == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new RespostaApi<>(null, "Nenhum quadro com o ID " + id + " foi encontrado.", 404));
+        }
+
+        try {
+            repository.delete(quadro);
+
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(new RespostaApi<>(null, "Quadro excluído com sucesso", 204));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new RespostaApi<>(null, "Quadro não foi excluido", 500));
+        }
+    }
 }

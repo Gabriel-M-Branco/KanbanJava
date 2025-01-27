@@ -1,8 +1,12 @@
 package com.kanbanjava.Model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Entity
 @Getter
@@ -19,11 +23,16 @@ public class Atribuicao {
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "task_id")
-    private Task task;
+    @JoinColumn(name = "tarefa_id")
+    private Tarefa tarefa;
 
-    private String dataAtribuicao;
+    @Schema(description = "Data da atribuicao", example = "2025-01-26T14:30")
+    private LocalDateTime dataAtribuicao;
+
+    @Schema(description = "Status da Atribuição", example = "EM_ANDAMENTO")
     private String status;
+
+    @Schema(description = "Nome do quadro", example = "Quadro de Projetos")
     private String prioridade;
 
 }

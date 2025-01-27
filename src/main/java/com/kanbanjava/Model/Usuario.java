@@ -1,5 +1,6 @@
 package com.kanbanjava.Model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,12 +22,15 @@ public class Usuario {
     private List<Atribuicao> atribuicoes = new ArrayList<>();
 
     @OneToMany(mappedBy = "responsavel")
-    private List<Task> tarefasQueRecebeu = new ArrayList<>();
+    private List<Tarefa> tarefasQueRecebeu = new ArrayList<>();
 
     @OneToMany(mappedBy = "atribuidoPor")
-    private List<Task> tarefasQueAtribuiu = new ArrayList<>();
+    private List<Tarefa> tarefasQueAtribuiu = new ArrayList<>();
 
+    @Schema(description = "Nome do usuário", example = "José da Silva")
     private String nome;
+
+    @Schema(description = "email do usuário", example = "jose@silva.com")
     private String email;
 
 }
