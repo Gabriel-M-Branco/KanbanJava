@@ -37,4 +37,8 @@ public class Usuario {
     @Schema(description = "Email do usuário", example = "jose@silva.com")
     private String email;
 
+    private String username;
+    private String password;
+    private String role;
+
 }

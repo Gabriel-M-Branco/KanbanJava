@@ -12,5 +12,4 @@ public class KanbanJavaApplication {
     public static void main(String[] args) {
         SpringApplication.run(KanbanJavaApplication.class, args);
     }
-
 }
