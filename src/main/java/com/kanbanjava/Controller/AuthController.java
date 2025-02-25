@@ -2,7 +2,6 @@ package com.kanbanjava.Controller;
 
 import com.kanbanjava.Request.LoginRequest;
 import com.kanbanjava.Util.JwtUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

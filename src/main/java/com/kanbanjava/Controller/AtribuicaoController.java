@@ -75,7 +75,7 @@ public class AtribuicaoController {
             Atribuicao atribuicaoSalva = repository.save(atribuicao);
 
             return ResponseEntity.status(HttpStatus.OK).body(new RespostaApi<>(atribuicaoSalva, "Atribuicao salva com sucesso", 200));
-        }catch (Exception e) {
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new RespostaApi<>(null, "Erro desconhecido ao salvar a atribuição", 500));
         }
     }

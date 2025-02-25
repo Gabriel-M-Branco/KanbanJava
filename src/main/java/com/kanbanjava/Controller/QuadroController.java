@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 
@@ -98,7 +97,7 @@ public class QuadroController {
             Quadro quadroSalvo = repository.save(quadro);
 
             return ResponseEntity.status(HttpStatus.OK).body(new RespostaApi<>(quadroSalvo, "Quadro salvo com sucesso", 200));
-        }catch (Exception e) {
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new RespostaApi<>(null, "Erro desconhecido ao salvar o quadro", 500));
         }
     }
