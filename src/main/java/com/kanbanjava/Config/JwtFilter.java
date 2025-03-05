@@ -6,7 +6,9 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +20,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.Date;
 
+@Slf4j
 @Component
 public class JwtFilter extends OncePerRequestFilter {
 
@@ -28,22 +31,29 @@ public class JwtFilter extends OncePerRequestFilter {
 
     public JwtFilter(SecretKey secretKey) {
         this.secretKey = secretKey;
+        System.out.println("SecretKey no JwtFilter: " + secretKey);
     }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
+        log.debug("Executando filtro de autenticação...");
+
+
         String token = getTokenFromRequest(request);
+        System.out.println("Token recebido: " + token);
 
         String requestURI = request.getRequestURI();
+
         if (requestURI.contains("/auth/login")) {
             filterChain.doFilter(request, response);
             return;
         }
 
         if (token == null || !validateToken(token)) {
-            filterChain.doFilter(request, response);
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.getWriter().write("Unauthorized: Invalid token.");
             return;
         }
 
@@ -57,7 +67,7 @@ public class JwtFilter extends OncePerRequestFilter {
         }
 
         if (username != null) {
-            UserDetails userDetails = new User(username, "", Collections.emptyList());
+            UserDetails userDetails = new User(username, "", Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
             UsernamePasswordAuthenticationToken authenticationToken =
                     new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 

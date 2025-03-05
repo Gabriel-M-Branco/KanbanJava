@@ -1,0 +1,154 @@
+2025-03-05T11:23:14.912-04:00  INFO 18144 --- [KanbanJava] [main] com.kanbanjava.KanbanJavaApplication     : Starting KanbanJavaApplication using Java 21.0.4 with PID 18144 (C:\Users\Gabriel\Documents\GitHub\KanbanJava\target\classes started by Gabriel in C:\Users\Gabriel\Documents\GitHub\KanbanJava)
+2025-03-05T11:23:14.916-04:00 DEBUG 18144 --- [KanbanJava] [main] com.kanbanjava.KanbanJavaApplication     : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-03-05T11:23:14.916-04:00  INFO 18144 --- [KanbanJava] [main] com.kanbanjava.KanbanJavaApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-03-05T11:23:15.502-04:00  INFO 18144 --- [KanbanJava] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-05T11:23:15.535-04:00  INFO 18144 --- [KanbanJava] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 4 JPA repository interfaces.
+2025-03-05T11:23:15.798-04:00  INFO 18144 --- [KanbanJava] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-05T11:23:15.807-04:00  INFO 18144 --- [KanbanJava] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-05T11:23:15.807-04:00  INFO 18144 --- [KanbanJava] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-05T11:23:15.837-04:00  INFO 18144 --- [KanbanJava] [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2025-03-05T11:23:15.837-04:00  INFO 18144 --- [KanbanJava] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 892 ms
+2025-03-05T11:23:15.873-04:00 DEBUG 18144 --- [KanbanJava] [main] com.kanbanjava.Config.JwtFilter          : Filter 'jwtFilter' configured for use
+2025-03-05T11:23:15.928-04:00  INFO 18144 --- [KanbanJava] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-05T11:23:15.957-04:00  INFO 18144 --- [KanbanJava] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2025-03-05T11:23:15.973-04:00  INFO 18144 --- [KanbanJava] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-05T11:23:16.167-04:00  INFO 18144 --- [KanbanJava] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-05T11:23:16.188-04:00  INFO 18144 --- [KanbanJava] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-05T11:23:16.637-04:00  INFO 18144 --- [KanbanJava] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5158a9f7
+2025-03-05T11:23:16.638-04:00  INFO 18144 --- [KanbanJava] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-05T11:23:16.664-04:00  WARN 18144 --- [KanbanJava] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-05T11:23:16.674-04:00  INFO 18144 --- [KanbanJava] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-05T11:23:17.215-04:00  INFO 18144 --- [KanbanJava] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-05T11:23:17.297-04:00  INFO 18144 --- [KanbanJava] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-05T11:23:17.521-04:00  WARN 18144 --- [KanbanJava] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-05T11:23:17.537-04:00  INFO 18144 --- [KanbanJava] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2025-03-05T11:23:17.566-04:00 DEBUG 18144 --- [KanbanJava] [main] com.kanbanjava.Util.JwtUtil              : SecretKey no JwtUtil: javax.crypto.spec.SecretKeySpec@58836b8
+2025-03-05T11:23:17.681-04:00 DEBUG 18144 --- [KanbanJava] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-03-05T11:23:17.696-04:00  INFO 18144 --- [KanbanJava] [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-03-05T11:23:17.867-04:00  INFO 18144 --- [KanbanJava] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/api'
+2025-03-05T11:23:17.872-04:00  INFO 18144 --- [KanbanJava] [main] com.kanbanjava.KanbanJavaApplication     : Started KanbanJavaApplication in 3.181 seconds (process running for 10.128)
+2025-03-05T11:25:37.226-04:00  INFO 18144 --- [KanbanJava] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-05T11:25:37.226-04:00  INFO 18144 --- [KanbanJava] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-05T11:25:37.227-04:00  INFO 18144 --- [KanbanJava] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-03-05T11:25:37.238-04:00 DEBUG 18144 --- [KanbanJava] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-03-05T11:25:37.251-04:00 DEBUG 18144 --- [KanbanJava] [http-nio-8080-exec-1] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T11:25:37.253-04:00 DEBUG 18144 --- [KanbanJava] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-03-05T11:25:37.254-04:00 DEBUG 18144 --- [KanbanJava] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+2025-03-05T11:25:37.490-04:00 DEBUG 18144 --- [KanbanJava] [http-nio-8080-exec-1] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-03-05T11:25:37.528-04:00 DEBUG 18144 --- [KanbanJava] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /tarefa/listar
+2025-03-05T11:25:37.529-04:00 DEBUG 18144 --- [KanbanJava] [http-nio-8080-exec-2] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T11:25:37.546-04:00 DEBUG 18144 --- [KanbanJava] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /tarefa/listar
+2025-03-05T11:25:37.581-04:00 DEBUG 18144 --- [KanbanJava] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /tarefa/listar
+2025-03-05T11:25:37.581-04:00 DEBUG 18144 --- [KanbanJava] [http-nio-8080-exec-3] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T11:25:37.583-04:00 DEBUG 18144 --- [KanbanJava] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /tarefa/listar
+2025-03-05T11:29:10.694-04:00  INFO 18144 --- [KanbanJava] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-05T11:29:10.698-04:00  INFO 18144 --- [KanbanJava] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-05T11:29:10.701-04:00  INFO 18144 --- [KanbanJava] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-05T11:29:10.702-04:00  INFO 18144 --- [KanbanJava] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-05T11:29:10.704-04:00  INFO 18144 --- [KanbanJava] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-05T11:57:00.758-04:00  INFO 9236 --- [KanbanJava] [main] com.kanbanjava.KanbanJavaApplication     : Starting KanbanJavaApplication using Java 21.0.4 with PID 9236 (C:\Users\Gabriel\Documents\GitHub\KanbanJava\target\classes started by Gabriel in C:\Users\Gabriel\Documents\GitHub\KanbanJava)
+2025-03-05T11:57:00.760-04:00 DEBUG 9236 --- [KanbanJava] [main] com.kanbanjava.KanbanJavaApplication     : Running with Spring Boot v3.4.1, Spring v6.2.1
+2025-03-05T11:57:00.760-04:00  INFO 9236 --- [KanbanJava] [main] com.kanbanjava.KanbanJavaApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-03-05T11:57:02.149-04:00  INFO 9236 --- [KanbanJava] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-05T11:57:02.228-04:00  INFO 9236 --- [KanbanJava] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 4 JPA repository interfaces.
+2025-03-05T11:57:02.831-04:00  INFO 9236 --- [KanbanJava] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-05T11:57:02.850-04:00  INFO 9236 --- [KanbanJava] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-05T11:57:02.850-04:00  INFO 9236 --- [KanbanJava] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-05T11:57:02.923-04:00  INFO 9236 --- [KanbanJava] [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2025-03-05T11:57:02.924-04:00  INFO 9236 --- [KanbanJava] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2084 ms
+2025-03-05T11:57:03.096-04:00 DEBUG 9236 --- [KanbanJava] [main] com.kanbanjava.Config.JwtFilter          : Filter 'jwtFilter' configured for use
+2025-03-05T11:57:03.315-04:00  INFO 9236 --- [KanbanJava] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-05T11:57:03.426-04:00  INFO 9236 --- [KanbanJava] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2025-03-05T11:57:03.469-04:00  INFO 9236 --- [KanbanJava] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-05T11:57:03.852-04:00  INFO 9236 --- [KanbanJava] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-05T11:57:03.904-04:00  INFO 9236 --- [KanbanJava] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-05T11:57:04.134-04:00  INFO 9236 --- [KanbanJava] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@b6136eb
+2025-03-05T11:57:04.135-04:00  INFO 9236 --- [KanbanJava] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-05T11:57:04.291-04:00  WARN 9236 --- [KanbanJava] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-05T11:57:04.332-04:00  INFO 9236 --- [KanbanJava] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-05T11:57:05.232-04:00  INFO 9236 --- [KanbanJava] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-05T11:57:05.382-04:00  INFO 9236 --- [KanbanJava] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-05T11:57:05.860-04:00  WARN 9236 --- [KanbanJava] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-05T11:57:05.905-04:00  INFO 9236 --- [KanbanJava] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2025-03-05T11:57:05.997-04:00 DEBUG 9236 --- [KanbanJava] [main] com.kanbanjava.Util.JwtUtil              : SecretKey no JwtUtil: javax.crypto.spec.SecretKeySpec@58804fa
+2025-03-05T11:57:06.196-04:00 DEBUG 9236 --- [KanbanJava] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-03-05T11:57:06.218-04:00  INFO 9236 --- [KanbanJava] [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-03-05T11:57:06.469-04:00  INFO 9236 --- [KanbanJava] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/api'
+2025-03-05T11:57:06.476-04:00  INFO 9236 --- [KanbanJava] [main] com.kanbanjava.KanbanJavaApplication     : Started KanbanJavaApplication in 6.332 seconds (process running for 7.195)
+2025-03-05T12:16:17.386-04:00  INFO 9236 --- [KanbanJava] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-05T12:16:17.387-04:00  INFO 9236 --- [KanbanJava] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-05T12:16:17.389-04:00  INFO 9236 --- [KanbanJava] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-03-05T12:16:17.400-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-03-05T12:16:17.416-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-1] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T12:16:17.417-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-03-05T12:16:17.418-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+2025-03-05T12:16:17.662-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-1] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-03-05T12:16:17.706-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /tarefa/listar
+2025-03-05T12:16:17.706-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-2] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T12:16:17.722-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /tarefa/listar
+2025-03-05T12:16:17.761-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /tarefa/listar
+2025-03-05T12:16:17.761-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-3] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T12:16:17.763-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /tarefa/listar
+2025-03-05T13:37:27.089-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /tarefa/listar
+2025-03-05T13:37:27.089-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-8] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T13:37:27.092-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /tarefa/listar
+2025-03-05T13:39:42.575-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing POST /auth/login
+2025-03-05T13:39:42.575-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-9] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T13:39:42.575-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-03-05T13:39:42.576-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured POST /auth/login
+2025-03-05T13:39:42.631-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-9] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2025-03-05T13:39:42.650-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /tarefa/listar
+2025-03-05T13:39:42.650-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-10] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T13:39:42.652-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /tarefa/listar
+2025-03-05T13:39:42.660-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /tarefa/listar
+2025-03-05T13:39:42.660-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-1] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T13:39:42.662-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /tarefa/listar
+2025-03-05T13:41:00.784-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /tarefa/listar
+2025-03-05T13:41:00.784-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-2] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T13:41:00.787-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /tarefa/listar
+2025-03-05T13:41:00.795-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /tarefa/listar
+2025-03-05T13:41:00.795-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-3] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T13:41:00.797-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /tarefa/listar
+2025-03-05T13:41:19.457-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /tarefa/listar
+2025-03-05T13:41:19.457-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-4] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T13:41:19.460-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /tarefa/listar
+2025-03-05T13:41:19.468-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /tarefa/listar
+2025-03-05T13:41:19.468-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-5] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T13:41:19.471-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /tarefa/listar
+2025-03-05T13:41:35.676-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /tarefa/listar
+2025-03-05T13:41:35.676-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-6] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T13:41:35.678-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /tarefa/listar
+2025-03-05T13:41:35.687-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /tarefa/listar
+2025-03-05T13:41:35.687-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-7] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T13:41:35.690-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /tarefa/listar
+2025-03-05T13:42:29.006-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /tarefa/listar
+2025-03-05T13:42:29.007-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-8] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T13:42:29.009-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /tarefa/listar
+2025-03-05T13:42:29.017-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /tarefa/listar
+2025-03-05T13:42:29.017-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-9] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T13:42:29.019-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /tarefa/listar
+2025-03-05T13:45:46.265-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /tarefa/listar
+2025-03-05T13:45:46.265-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-10] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T13:45:46.267-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /tarefa/listar
+2025-03-05T13:45:46.275-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /tarefa/listar
+2025-03-05T13:45:46.276-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-1] com.kanbanjava.Config.JwtFilter          : Executando filtro de autenticação...
+2025-03-05T13:45:46.278-04:00 DEBUG 9236 --- [KanbanJava] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /tarefa/listar
+2025-03-05T14:16:59.985-04:00  INFO 9236 --- [KanbanJava] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-05T14:16:59.990-04:00  INFO 9236 --- [KanbanJava] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-05T14:16:59.993-04:00  INFO 9236 --- [KanbanJava] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-05T14:16:59.995-04:00  INFO 9236 --- [KanbanJava] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-05T14:16:59.997-04:00  INFO 9236 --- [KanbanJava] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -1,5 +1,6 @@
 package com.kanbanjava.Controller;
 
+import com.kanbanjava.DTO.StatusDTO;
 import com.kanbanjava.Model.Quadro;
 import com.kanbanjava.Repository.QuadroRepository;
 import com.kanbanjava.Response.RespostaApi;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -148,4 +150,38 @@ public class QuadroController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new RespostaApi<>(null, "Quadro não foi excluido", 500));
         }
     }
+
+    @PutMapping("/adicionar-status/{id}")
+    @Operation(summary = "Adiciona uma coluna de status", method = "PUT")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Coluna criada com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Parâmetros inválidos"),
+            @ApiResponse(responseCode = "404", description = "Quadro não foi encontrado"),
+            @ApiResponse(responseCode = "500", description = "Erro ao adicionar coluna no quadro"),
+    })
+    public ResponseEntity<RespostaApi<StatusDTO>> adicionarColunaStatus(@PathVariable("id") Long id, @RequestBody StatusDTO status) {
+        Quadro quadro = repository.findById(id).orElse(null);
+
+        if (quadro == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new RespostaApi<>(null, "Nenhum quadro com o ID " + id + " foi encontrado.", 404));
+        }
+
+        List<String> listaStatus = quadro.getStatus();
+
+        if (listaStatus == null) {
+            listaStatus = new ArrayList<>();
+            quadro.setStatus(listaStatus);
+        }
+
+        if (listaStatus.contains(status.getTitulo())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new RespostaApi<>(null, "Coluna com esse nome já existe", 400));
+        }
+
+        listaStatus.add(status.getTitulo());
+        repository.save(quadro);
+
+        return ResponseEntity.ok(new RespostaApi<>(status, "Coluna criada com sucesso", 200));
+    }
+
 }
