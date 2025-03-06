@@ -5,15 +5,30 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
-@Schema(description = "Representa um quadro que contém tarefas e status.")
+@Schema(description = "Representa uma coluna de status que contém tarefas.")
 public class ColunaStatus {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "quadro_seq")
-    @SequenceGenerator(name = "quadro_seq", sequenceName = "seq_quadro_id", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "coluna_seq")
+    @SequenceGenerator(name = "coluna_seq", sequenceName = "seq_coluna_id", allocationSize = 1)
     @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "quadro_id")
+    @Schema(description = "Quadro ao qual a coluna status pertence", example = "1")
+    private Quadro quadro;
+
+    @OneToMany(mappedBy = "colunaStatus", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Schema(accessMode = Schema.AccessMode.READ_ONLY)
+    private List<Tarefa> tarefas = new ArrayList<>();
+
+    private String titulo;
+
 }

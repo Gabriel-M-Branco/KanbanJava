@@ -20,15 +20,13 @@ public class Quadro {
     @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
 
-    @ElementCollection
-    @CollectionTable(name = "quadro_status", joinColumns = @JoinColumn(name = "quadro_id"))
-    @Column(name = "status")
-    @Schema(description = "Lista de status do quadro", example = "[\"Aberto\", \"Em andamento\", \"Concluído\"]")
-    private List<String> status;
-
     @OneToMany(mappedBy = "quadro", cascade = CascadeType.ALL, orphanRemoval = true)
     @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private List<Tarefa> tarefas = new ArrayList<>();
+
+    @OneToMany(mappedBy = "quadro", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Schema(accessMode = Schema.AccessMode.READ_ONLY)
+    private List<ColunaStatus> colunaStatus = new ArrayList<>();
 
     @Schema(description = "Nome do quadro", example = "Quadro de Projetos")
     private String nome;

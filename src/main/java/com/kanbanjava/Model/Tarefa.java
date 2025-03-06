@@ -15,8 +15,8 @@ import java.util.List;
 public class Tarefa {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_seq")
-    @SequenceGenerator(name = "item_seq", sequenceName = "seq_item_id", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tarefa_seq")
+    @SequenceGenerator(name = "tarefa_seq", sequenceName = "seq_tarefa_id", allocationSize = 1)
     @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
 
@@ -38,6 +38,11 @@ public class Tarefa {
     @JoinColumn(name = "quadro_id")
     @Schema(description = "Quadro ao qual a tarefa pertence", example = "1")
     private Quadro quadro;
+
+    @ManyToOne
+    @JoinColumn(name = "coluna_status_id")
+    @Schema(description = "Coluna onde a tarefa está", example = "1")
+    private ColunaStatus colunaStatus;
 
     @Schema(description = "Titulo da tarefa", example = "Consertar Front-End")
     private String titulo;

@@ -12,7 +12,6 @@ public class JwtConfig {
     @Bean
     public SecretKey secretKey() {
         SecretKey key = Keys.secretKeyFor(io.jsonwebtoken.SignatureAlgorithm.HS256);
-        System.out.println("SecretKey no JwtConfig: " + key);
         return key;
     }
 }

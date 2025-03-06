@@ -27,27 +27,6 @@ public class QuadroController {
         this.repository = repository;
     }
 
-    @GetMapping("/lista-status/{id}")
-    @Operation(summary = "Retorna uma lista com os status que um Quadro possui", method = "GET")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Lista retornada com sucesso"),
-            @ApiResponse(responseCode = "400", description = "Parâmetros inválidos"),
-            @ApiResponse(responseCode = "500", description = "Erro ao retornar a lista"),
-    })
-    public ResponseEntity<List<String>> ListarStatusDoQuadro(@PathVariable("id") Long id) {
-        try {
-            Quadro quadro = repository.findById(id).orElse(null);
-
-            if (quadro == null) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonList("Quadro não encontrado"));
-            }
-
-            return ResponseEntity.status(HttpStatus.OK).body(quadro.getStatus());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Collections.singletonList("Erro ao tentar listar o quadro"));
-        }
-    }
-
     @GetMapping("/listar")
     @Operation(summary = "Lista os Quadros", method = "GET")
     @ApiResponses(value = {
@@ -121,7 +100,6 @@ public class QuadroController {
 
         quadroAntigo.setDescricao(quadroNovo.getNome());
         quadroAntigo.setNome(quadroNovo.getDescricao());
-        quadroAntigo.setStatus(quadroNovo.getStatus());
         repository.save(quadroAntigo);
 
         return ResponseEntity.status(HttpStatus.OK).body(new RespostaApi<>(quadroAntigo, "Quadro atualizado com sucesso", 200));
@@ -149,39 +127,6 @@ public class QuadroController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new RespostaApi<>(null, "Quadro não foi excluido", 500));
         }
-    }
-
-    @PutMapping("/adicionar-status/{id}")
-    @Operation(summary = "Adiciona uma coluna de status", method = "PUT")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Coluna criada com sucesso"),
-            @ApiResponse(responseCode = "400", description = "Parâmetros inválidos"),
-            @ApiResponse(responseCode = "404", description = "Quadro não foi encontrado"),
-            @ApiResponse(responseCode = "500", description = "Erro ao adicionar coluna no quadro"),
-    })
-    public ResponseEntity<RespostaApi<StatusDTO>> adicionarColunaStatus(@PathVariable("id") Long id, @RequestBody StatusDTO status) {
-        Quadro quadro = repository.findById(id).orElse(null);
-
-        if (quadro == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new RespostaApi<>(null, "Nenhum quadro com o ID " + id + " foi encontrado.", 404));
-        }
-
-        List<String> listaStatus = quadro.getStatus();
-
-        if (listaStatus == null) {
-            listaStatus = new ArrayList<>();
-            quadro.setStatus(listaStatus);
-        }
-
-        if (listaStatus.contains(status.getTitulo())) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(new RespostaApi<>(null, "Coluna com esse nome já existe", 400));
-        }
-
-        listaStatus.add(status.getTitulo());
-        repository.save(quadro);
-
-        return ResponseEntity.ok(new RespostaApi<>(status, "Coluna criada com sucesso", 200));
     }
 
 }

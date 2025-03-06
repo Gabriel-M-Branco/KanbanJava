@@ -6,7 +6,6 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,7 +19,6 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.Date;
 
-@Slf4j
 @Component
 public class JwtFilter extends OncePerRequestFilter {
 
@@ -31,19 +29,13 @@ public class JwtFilter extends OncePerRequestFilter {
 
     public JwtFilter(SecretKey secretKey) {
         this.secretKey = secretKey;
-        System.out.println("SecretKey no JwtFilter: " + secretKey);
     }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
-        log.debug("Executando filtro de autenticação...");
-
-
         String token = getTokenFromRequest(request);
-        System.out.println("Token recebido: " + token);
-
         String requestURI = request.getRequestURI();
 
         if (requestURI.contains("/auth/login")) {

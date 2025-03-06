@@ -2,13 +2,11 @@ package com.kanbanjava.Util;
 
 import com.kanbanjava.Config.JwtConfig;
 import io.jsonwebtoken.Jwts;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
 
-@Slf4j
 @Component
 public class JwtUtil {
 
@@ -18,7 +16,6 @@ public class JwtUtil {
 
     public JwtUtil(JwtConfig jwtConfig) {
         this.secretKey = jwtConfig.secretKey();
-        log.debug("SecretKey no JwtUtil: {}", secretKey);
     }
 
     public String generateToken(String username) {
