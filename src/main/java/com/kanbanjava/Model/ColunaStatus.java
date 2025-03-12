@@ -1,5 +1,6 @@
 package com.kanbanjava.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -22,6 +23,7 @@ public class ColunaStatus {
 
     @ManyToOne
     @JoinColumn(name = "quadro_id")
+    @JsonBackReference
     @Schema(description = "Quadro ao qual a coluna status pertence", example = "1")
     private Quadro quadro;
 

@@ -49,7 +49,7 @@ public class ColunaStatusController {
             @ApiResponse(responseCode = "400", description = "Parâmetros inválidos"),
             @ApiResponse(responseCode = "500", description = "Erro ao encontrar a Coluna de Status"),
     })
-    public ResponseEntity<RespostaApi<ColunaStatus>> ListarColunaStatus(@PathVariable("id") Long id) {
+    public ResponseEntity<RespostaApi<ColunaStatus>> ListarColunaStatusPorId(@PathVariable("id") Long id) {
         try {
             ColunaStatus colunaStatus = repository.findById(id).orElse(null);
 
@@ -60,6 +60,28 @@ public class ColunaStatusController {
             return ResponseEntity.status(HttpStatus.OK).body(new RespostaApi<>(colunaStatus, "Coluna Status encontrada com sucesso", 200));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new RespostaApi<>(null, "Erro ao tentar listar a Coluna Status", 500));
+        }
+    }
+
+    @GetMapping("/listar-por-quadro/{id}")
+    @Operation(summary = "Lista todas as Coluna de Status presentes no Quadro", method = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Colunas de Status encontradas com sucesso"),
+            @ApiResponse(responseCode = "404", description = "Nenhuma Coluna de Status foi encontrada nesse Quadro"),
+            @ApiResponse(responseCode = "400", description = "Parâmetros inválidos"),
+            @ApiResponse(responseCode = "500", description = "Erro ao listar as Colunas de Status"),
+    })
+    public ResponseEntity<RespostaApi<List<ColunaStatus>>> ListarColunaStatusPorQuadro(@PathVariable("id") Long idQuadro) {
+        try {
+            List<ColunaStatus> colunasStatus = repository.buscarPorQuadro(idQuadro);
+
+            if (colunasStatus.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new RespostaApi<>(null, "Nenhuma Coluna de Status foi encontrada no Quadro de ID: " + idQuadro, 404));
+            }
+
+            return ResponseEntity.status(HttpStatus.OK).body(new RespostaApi<>(colunasStatus, "Lista de Colunas de Status encontradas com sucesso", 200));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new RespostaApi<>(null, "Erro ao tentar listar as Colunas de Status", 500));
         }
     }
 
