@@ -63,6 +63,24 @@ public class TarefaController {
         }
     }
 
+    @GetMapping("/listar-por-coluna/{id}")
+    @Operation(summary = "Lista uma Tarefa pelo ID da coluna status", method = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Tarefas encontradas com sucesso"),
+            @ApiResponse(responseCode = "404", description = "Nenhuma tarefa com esse ID foi encontrado"),
+            @ApiResponse(responseCode = "400", description = "Parâmetros inválidos"),
+            @ApiResponse(responseCode = "500", description = "Erro ao encontrar as Tarefas"),
+    })
+    public ResponseEntity<RespostaApi<List<Tarefa>>> ListarTarefasPorColunaStatus(@PathVariable("id") Long id) {
+        try {
+            List<Tarefa> tarefa = repository.listarPorColunaStatus(id);
+
+            return ResponseEntity.status(HttpStatus.OK).body(new RespostaApi<>(tarefa, "Lista de tarefas encontradas com sucesso", 200));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new RespostaApi<>(null, "Erro ao tentar listar a tarefa", 500));
+        }
+    }
+
     @PostMapping("/salvar")
     @Operation(summary = "Salva uma Tarefa", method = "POST")
     @ApiResponses(value = {

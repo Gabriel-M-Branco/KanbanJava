@@ -1,6 +1,7 @@
 package com.kanbanjava.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -28,6 +29,7 @@ public class ColunaStatus {
     private Quadro quadro;
 
     @OneToMany(mappedBy = "colunaStatus", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private List<Tarefa> tarefas = new ArrayList<>();
 

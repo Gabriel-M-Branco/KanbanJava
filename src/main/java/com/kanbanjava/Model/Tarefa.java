@@ -1,5 +1,6 @@
 package com.kanbanjava.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -41,6 +42,7 @@ public class Tarefa {
 
     @ManyToOne
     @JoinColumn(name = "coluna_status_id")
+    @JsonBackReference
     @Schema(description = "Coluna onde a tarefa está", example = "1")
     private ColunaStatus colunaStatus;
 
