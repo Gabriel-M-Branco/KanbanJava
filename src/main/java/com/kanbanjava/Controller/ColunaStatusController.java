@@ -75,10 +75,6 @@ public class ColunaStatusController {
         try {
             List<ColunaStatus> colunasStatus = repository.buscarPorQuadro(idQuadro);
 
-            if (colunasStatus.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new RespostaApi<>(null, "Nenhuma Coluna de Status foi encontrada no Quadro de ID: " + idQuadro, 404));
-            }
-
             return ResponseEntity.status(HttpStatus.OK).body(new RespostaApi<>(colunasStatus, "Lista de Colunas de Status encontradas com sucesso", 200));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new RespostaApi<>(null, "Erro ao tentar listar as Colunas de Status", 500));
